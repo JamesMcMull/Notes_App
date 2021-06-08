@@ -53,9 +53,15 @@ form.addEventListener('submit', function (e) {
 
   itemsArray.push(input.value);
   localStorage.setItem('items', JSON.stringify(itemsArray));
-  liMaker(input.value);
+  liMaker(input.value.substring(0, 20));
   input.value = "";
 });
+
+item.onClick( function ()) {
+  $("value")
+  localStorage.getItem('item')
+  input.value = input.value;
+}
 
 data.forEach(item => {
   liMaker(item);
@@ -68,3 +74,4 @@ button.addEventListener('click', function () {
   }
   itemsArray = [];
 });
+
