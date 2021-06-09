@@ -1,37 +1,3 @@
-// const form = document.querySelector('form');
-// const ul = document.querySelector('ul');
-// const button = document.querySelector('button');
-// const input = document.getElementById('item');
-
-// let items
-
-// if (localStorage.getItem('items')){
-//   items = JSON.parse(localStorage.getItem('items'));
-// } else {
-//   items = [];
-// }
-
-// localStorage.setItem('items', JSON.stringify(itemsArray));
-// const data = JSON.parse(localStorage.getItem('items'));
-
-// const liMaker = (text) => {
-//   const li = document.createElement('li');
-//   li.textContent = text;
-//   ul.appendChild(li);
-// }
-
-// form.addEventListener('submit', function (e){
-// //button.addEventListener('click',function (e){
-//   e.preventDefault();
-//   itemsArray.push(input.value);
-//   localStorage.setItem('items', JSON.stringify(itemsArray));
-//   liMaker(input.value);
-//   input.value = "";
-// })
-
-// data.forEach((item) => {
-//   liMaker(item);
-// })
 
 const form = document.querySelector('form');
 const ul = document.querySelector('ul');
@@ -44,7 +10,9 @@ const data = JSON.parse(localStorage.getItem('items'));
 
 const liMaker = (text) => {
   const li = document.createElement('li');
-  li.textContent = text;
+  li.className = "listItemContract"
+  li.innerText = text
+  li.addEventListener('click', listItemOnClick)
   ul.appendChild(li);
 }
 
@@ -53,15 +21,32 @@ form.addEventListener('submit', function (e) {
 
   itemsArray.push(input.value);
   localStorage.setItem('items', JSON.stringify(itemsArray));
-  liMaker(input.value.substring(0, 20));
+  liMaker(input.value);
   input.value = "";
+
 });
 
-item.onClick( function ()) {
-  $("value")
-  localStorage.getItem('item')
-  input.value = input.value;
+
+const listItemOnClick = (e) => {
+  //const style = e.classList.toggle("listItem")
+
+  if (e.target.classList.contains("listItemContract")) {
+    e.target.classList.remove("listItemContract")
+    e.target.classList.add("listItemExpand")
+  } else {
+    e.target.classList.add("listItemContract")
+    e.target.classList.remove("listItemExpand")
+  }
+
 }
+
+
+
+// item.onClick( function ()) {
+//   $("value")
+//   localStorage.getItem('item')
+//   input.value = input.value;
+// }
 
 data.forEach(item => {
   liMaker(item);
