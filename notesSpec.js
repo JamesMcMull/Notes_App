@@ -22,7 +22,15 @@ function testAddingToLocalStorage() {
         return false
 };
 
-
+function testClearingLocalStorage() {
+    itemsArray.push("This is our first note");
+    localStorage.setItem('items', JSON.stringify(itemsArray));
+    localStorage.clear();
+    if(localStorage.length === 0)
+        return true
+     else
+        return false
+};
 // click clear 
 // expect page not to have content
 // our array is empty
